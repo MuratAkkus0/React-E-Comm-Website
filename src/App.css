@@ -27,6 +27,7 @@
   height: 100%;
   overflow-y: auto;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   padding-top: calc(var(--header-height) + 0.5rem);
   padding-right: var(--section-side-paddings);
