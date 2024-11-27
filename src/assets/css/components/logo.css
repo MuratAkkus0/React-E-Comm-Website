@@ -1,0 +1,12 @@
+.logo--container,
+.logo__text {
+  user-select: none;
+}
+.logo__text {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: -0.5rem;
+}
+.logo {
+  font-size: 5rem;
+}
