@@ -1,4 +1,5 @@
 header {
+  z-index: 9;
   width: 100%;
   height: var(--header-height);
   background-color: var(--main-bg-clr);
