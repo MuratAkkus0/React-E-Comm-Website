@@ -11,6 +11,7 @@ header {
   align-items: center;
   padding: 0 var(--section-side-paddings);
   position: fixed;
+  transition: 0.3s transform;
 }
 .header__controls--container {
   height: 2rem;
@@ -71,7 +72,7 @@ then we can apply css to seach__item class */
 .change__thema--container {
   cursor: pointer;
   width: 4rem;
-  height: 2rem;
+  height: 2.1rem;
   border: 1px solid black;
   border-radius: 1.5rem;
   display: flex;
