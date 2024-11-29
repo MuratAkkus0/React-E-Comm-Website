@@ -10,11 +10,13 @@
 }
 :root {
   --header-height: 10rem;
+  --header-max-height: 130px;
   --main-bg-clr: #fff;
   --main-clr: black;
   --main-border-color: lightgrey;
   --thema-ico-size: 1.8rem;
-  --section-side-paddings: 15rem;
+  --section-side-paddings: 10rem;
+  --section-side-paddings-s: 1rem;
 }
 
 #root {
@@ -22,7 +24,7 @@
   height: 100vh;
 }
 
-.page__container {
+.page__container--flex-x-centered {
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -30,6 +32,21 @@
   justify-content: center;
   flex-wrap: wrap;
   padding-top: calc(var(--header-height) + 0.5rem);
+  padding-right: var(--section-side-paddings);
+  padding-left: var(--section-side-paddings);
+}
+
+.page__container--grid {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 20rem);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  padding-top: calc(var(--header-height) + 0.5rem);
+  padding-bottom: 1rem;
   padding-right: var(--section-side-paddings);
   padding-left: var(--section-side-paddings);
 }
@@ -60,4 +77,24 @@
 .icon-clickable {
   cursor: pointer;
   font-size: 1.8rem;
+}
+
+.app__spinner {
+  z-index: 8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .page__container--grid {
+    padding-right: var(--section-side-paddings-s);
+    padding-left: var(--section-side-paddings-s);
+  }
 }

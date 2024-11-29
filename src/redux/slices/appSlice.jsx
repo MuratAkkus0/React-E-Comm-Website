@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isDarkTheme: false,
   isSearchbarActive: false,
-  loading: false,
+  isPageLoading: true,
 };
 
 export const appSlice = createSlice({
@@ -16,8 +16,13 @@ export const appSlice = createSlice({
     setIsSearchbarActive: (state, val) => {
       state.isSearchbarActive = val.payload ?? !state.isSearchbarActive;
     },
+    setIsPageLoading: (state, action) => {
+      state.isPageLoading = false;
+      console.log(state.isPageLoading);
+    },
   },
 });
 
-export const { setIsDarkTheme, setIsSearchbarActive } = appSlice.actions;
+export const { setIsDarkTheme, setIsSearchbarActive, setIsPageLoading } =
+  appSlice.actions;
 export default appSlice.reducer;

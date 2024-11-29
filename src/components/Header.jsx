@@ -16,7 +16,7 @@ function Header() {
 
   const closeSearchbar = (e) => {
     e.stopPropagation();
-    if (e.target.id == "searchIcon" || e.target.id == "searchInput") {
+    if (e.target.closest(".header__search--container")) {
       return;
     }
     dispatch(setIsSearchbarActive(false));
