@@ -96,7 +96,7 @@
 @media screen and (max-width: 768px) {
   .page__container--grid {
     grid-template-columns: auto auto auto;
-    grid-auto-rows: minmax(250px, 450px);
+    grid-auto-rows: 13rem;
     padding-right: var(--section-side-paddings-s);
     padding-left: var(--section-side-paddings-s);
   }

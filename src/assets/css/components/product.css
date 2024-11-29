@@ -14,7 +14,6 @@
   box-shadow: 0 3px 8px 0px lightgray;
   background-color: white;
   transition: 0.2s all;
-  overflow: hidden;
 }
 .product__card--container:hover {
   transform: scale(1.003);
@@ -52,6 +51,7 @@
 
 @media screen and (max-width: 768px) {
   .product__card--container {
+    padding: 0.5rem;
     gap: 0.3rem;
     justify-self: left;
   }
