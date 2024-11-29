@@ -15,7 +15,7 @@
   --main-clr: black;
   --main-border-color: lightgrey;
   --thema-ico-size: 1.8rem;
-  --section-side-paddings: 10rem;
+  --section-side-paddings: 15rem;
   --section-side-paddings-s: 1rem;
 }
 
@@ -44,7 +44,7 @@
   justify-items: center;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 20rem);
-  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-auto-rows: minmax(550px, 600px);
   padding-top: calc(var(--header-height) + 0.5rem);
   padding-bottom: 1rem;
   padding-right: var(--section-side-paddings);
