@@ -95,8 +95,8 @@
 /*  */
 @media screen and (max-width: 768px) {
   .page__container--grid {
-    grid-template-columns: auto auto auto;
-    grid-auto-rows: 13rem;
+    grid-template-columns: auto auto;
+    grid-auto-rows: 14.5rem;
     padding-right: var(--section-side-paddings-s);
     padding-left: var(--section-side-paddings-s);
   }
