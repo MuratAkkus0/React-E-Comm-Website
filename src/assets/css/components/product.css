@@ -34,12 +34,12 @@
   max-height: 90%;
 }
 .product__card--title {
-  font-size: clamp(0.6rem, 2vw, 1.1rem);
+  font-size: clamp(0.7rem, 2vw, 1.1rem);
 }
 .product__card--description {
   flex: 1;
   color: #000000b4;
-  font-size: clamp(0.48rem, 1.5vw, 0.9rem);
+  font-size: clamp(0.5rem, 1.5vw, 0.9rem);
 }
 .product__card--description::first-letter {
   text-transform: uppercase;
