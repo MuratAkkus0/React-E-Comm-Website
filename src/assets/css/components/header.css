@@ -13,13 +13,9 @@ header {
   position: fixed;
   transition: 0.3s transform;
 }
-.header__controls--container {
-  height: 2rem;
-}
 
 .header__controls--container {
-  display: flex;
-  justify-content: space-evenly;
+  height: 2rem;
   gap: 1rem;
 }
 
@@ -72,13 +68,12 @@ then we can apply css to seach__item class */
 .change__thema--container {
   cursor: pointer;
   width: 4rem;
-  height: 2.1rem;
+  height: 2.05rem;
   border: 1px solid black;
   border-radius: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: right;
-  transition: 0.2s all;
   padding: 0 0.08rem;
 }
 .thema__icon {
@@ -99,8 +94,27 @@ then we can apply css to seach__item class */
     padding: 0 var(--section-side-paddings-s);
   }
   .header__controls--container {
+    flex: 1;
+    height: 100%;
+    display: grid;
     gap: 0.5rem;
+    align-content: center;
     justify-content: right;
-    transition: 0.9s wrap;
+    justify-items: right;
+    grid-template-columns: repeat(3, 2rem);
+    grid-template-rows: repeat(2, auto);
+  }
+  .change__thema--container {
+    margin-right: 0.2rem;
+    justify-self: right;
+    grid-column: 1/4;
+  }
+  .header__search--container {
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+  .card__icon {
+    grid-row: 2/3;
+    grid-column: 3/4;
   }
 }
