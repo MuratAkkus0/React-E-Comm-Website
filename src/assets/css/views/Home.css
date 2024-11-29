@@ -1,3 +1,8 @@
 .product__list--container {
   gap: 1rem;
 }
+@media screen and (max-width: 768px) {
+  .product__list--container {
+    gap: 0.5rem;
+  }
+}
