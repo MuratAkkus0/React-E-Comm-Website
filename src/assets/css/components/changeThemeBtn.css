@@ -1,0 +1,31 @@
+.change__thema--container {
+  cursor: pointer;
+  width: 4rem;
+  height: 2.05rem;
+  border: 1px solid black;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 0 0.08rem;
+}
+.thema__icon {
+  width: var(--thema-ico-size);
+  height: var(--thema-ico-size);
+  padding: 0.2rem;
+  border: 2px solid black;
+  border-radius: 50%;
+  transition: 0.2s all;
+}
+.thema__icon--dark {
+  color: black;
+  background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .change__thema--container {
+    margin-right: 0.2rem;
+    justify-self: right;
+    grid-column: 1/4;
+  }
+}

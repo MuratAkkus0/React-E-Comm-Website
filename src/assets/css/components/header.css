@@ -19,76 +19,6 @@ header {
   gap: 1rem;
 }
 
-.header__search--container {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.header__search--input {
-  width: 0rem;
-  height: 100%;
-  border: none;
-  font-size: 1rem;
-  outline: none;
-  padding: 0rem 1.5rem 0 0rem;
-  transition: 0.3s width;
-}
-
-.header__search--input::placeholder {
-  color: var(--main-border-color);
-}
-
-.search__icon {
-  color: var(--main-border-color);
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.search-active {
-  transition: 0.3s width;
-  width: 15rem;
-  max-width: 350px;
-  padding: 0rem 2rem 0 0.3rem;
-  border-bottom: 1px solid var(--main-border-color);
-}
-
-.search-active:not(.search-active.dark-theme):focus {
-  border-bottom: 1px solid var(--main-clr);
-}
-
-/* to be able to select previous element from search active that dont have dark-theme class.
-then we can apply css to seach__item class */
-.search__icon:has(+ .search-active:not(.search-active.dark-theme):focus) {
-  color: black;
-}
-
-.change__thema--container {
-  cursor: pointer;
-  width: 4rem;
-  height: 2.05rem;
-  border: 1px solid black;
-  border-radius: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  padding: 0 0.08rem;
-}
-.thema__icon {
-  width: var(--thema-ico-size);
-  height: var(--thema-ico-size);
-  padding: 0.2rem;
-  border: 2px solid black;
-  border-radius: 50%;
-  transition: 0.2s all;
-}
-.thema__icon--dark {
-  color: black;
-  background-color: white;
-}
-
 @media screen and (max-width: 768px) {
   header {
     padding: 0 var(--section-side-paddings-s);
@@ -104,15 +34,7 @@ then we can apply css to seach__item class */
     grid-template-columns: repeat(3, 2rem);
     grid-template-rows: repeat(2, auto);
   }
-  .change__thema--container {
-    margin-right: 0.2rem;
-    justify-self: right;
-    grid-column: 1/4;
-  }
-  .header__search--container {
-    grid-row: 2/3;
-    grid-column: 2/3;
-  }
+
   .card__icon {
     grid-row: 2/3;
     grid-column: 3/4;

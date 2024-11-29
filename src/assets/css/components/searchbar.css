@@ -1,0 +1,52 @@
+.search--container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.search--input {
+  width: 0rem;
+  height: 100%;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  padding: 0rem 1.5rem 0 0rem;
+  transition: 0.3s width;
+}
+
+.search--input::placeholder {
+  color: var(--main-border-color);
+}
+
+.search__icon {
+  color: var(--main-border-color);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-active {
+  transition: 0.3s width;
+  width: 15rem;
+  max-width: 350px;
+  padding: 0rem 2rem 0 0.3rem;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.search-active:not(.search-active.dark-theme):focus {
+  border-bottom: 1px solid var(--main-clr);
+}
+
+/* to be able to select previous element from search active that dont have dark-theme class.
+  then we can apply css to seach__item class */
+.search__icon:has(+ .search-active:not(.search-active.dark-theme):focus) {
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .search--container {
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+}

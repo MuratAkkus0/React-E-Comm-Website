@@ -2,6 +2,7 @@ import { FaSun } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsDarkTheme } from "../redux/slices/appSlice";
+import "../assets/css/components/changeThemeBtn.css";
 
 function ChangeThemeBtn() {
   const { isDarkTheme } = useSelector((store) => store.app);

@@ -2,18 +2,17 @@ import { CiShoppingBasket } from "react-icons/ci";
 import Logo from "./Logo";
 import "../assets/css/components/header.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsDarkTheme, setIsSearchbarActive } from "../redux/slices/appSlice";
+import { setIsSearchbarActive } from "../redux/slices/appSlice";
 import Searchbar from "./Searchbar";
 import ChangeThemeBtn from "./ChangeThemeBtn";
 
 function Header() {
   const { isDarkTheme } = useSelector((store) => store.app);
-
   const dispatch = useDispatch();
 
   const closeSearchbar = (event) => {
     event.stopPropagation();
-    if (event.target.closest(".header__search--container")) {
+    if (event.target.closest("#headerSearchInput")) {
       return;
     }
     dispatch(setIsSearchbarActive(false));

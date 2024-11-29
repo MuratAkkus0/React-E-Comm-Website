@@ -1,15 +1,15 @@
 import { MdSearch } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSearchbarActive } from "../redux/slices/appSlice";
+import "../assets/css/components/searchbar.css";
 
 function Searchbar() {
   const { isSearchbarActive } = useSelector((store) => store.app);
-
   const { isDarkTheme } = useSelector((store) => store.app);
   const dispatch = useDispatch();
 
   return (
-    <div className="header__search--container">
+    <div className="search--container" id="headerSearchInput">
       <MdSearch
         id="searchIcon"
         onClick={() => dispatch(setIsSearchbarActive())}
@@ -20,9 +20,7 @@ function Searchbar() {
         type="text"
         placeholder="search..."
         className={`${
-          isSearchbarActive
-            ? "header__search--input search-active"
-            : "header__search--input"
+          isSearchbarActive ? "search--input search-active" : "search--input"
         } ${isDarkTheme ? "dark-theme" : ""}`}
       />
     </div>
