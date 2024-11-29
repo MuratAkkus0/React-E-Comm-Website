@@ -1,4 +1,4 @@
-import ProductList from "../components/productList";
+import ProductList from "../components/ProductList";
 import "../assets/css/views/Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSearchbarActive } from "../redux/slices/appSlice";
