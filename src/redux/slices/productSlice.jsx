@@ -33,7 +33,7 @@ export const productSlice = createSlice({
           {
             cause:
               "Check your API key or be sure that your API server is running.",
-          }
+          },
         );
     });
   },
