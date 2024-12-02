@@ -5,32 +5,43 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsSearchbarActive } from "../redux/slices/appSlice";
 import Searchbar from "./Searchbar";
 import ChangeThemeBtn from "./ChangeThemeBtn";
+import { setIsBasketActive } from "../redux/slices/basketSlice";
 
 function Header() {
   const { isDarkTheme } = useSelector((store) => store.app);
+  const { isBasketActive } = useSelector((store) => store.basket);
   const dispatch = useDispatch();
 
-  const closeSearchbar = (event) => {
+  const handleClick = (event) => {
     event.stopPropagation();
-    if (event.target.closest("#headerSearchInput")) {
+    //close basket
+    if (event.target.id !== "basketIcon") {
+      dispatch(setIsBasketActive(false));
+      console.log(isBasketActive);
       return;
     }
-    dispatch(setIsSearchbarActive(false));
+    // close searchbar
+    if (event.target.closest("#headerSearchInput")) {
+      return;
+    } else {
+      dispatch(setIsSearchbarActive(false));
+    }
   };
 
   return (
     <>
-      <header
-        onClick={closeSearchbar}
-        className={isDarkTheme ? "dark-theme" : ""}
-      >
+      <header onClick={handleClick} className={isDarkTheme ? "dark-theme" : ""}>
         <div className="header__logo--container flex-column-centered">
           <Logo />
         </div>
         <div className="header__controls--container flex-row-centered">
           <ChangeThemeBtn />
-          <Searchbar />
-          <CiShoppingBasket className="card__icon icon-clickable" />
+          <Searchbar onClick={(e) => e.stopPropagation()} />
+          <CiShoppingBasket
+            id="basketIcon"
+            onClick={() => dispatch(setIsBasketActive())}
+            className="card__icon icon-clickable"
+          />
         </div>
       </header>
     </>

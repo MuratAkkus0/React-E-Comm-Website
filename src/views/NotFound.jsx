@@ -1,5 +1,11 @@
 function NotFound() {
-  return <div>NotFound</div>;
+  return (
+    <>
+      <section className={`page__container--grid product__list--container `}>
+        Not Found
+      </section>
+    </>
+  );
 }
 
 export default NotFound;

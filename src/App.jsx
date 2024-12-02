@@ -6,6 +6,7 @@ import { getAllProducts } from "./redux/slices/productSlice";
 import RouteConfig from "./config/RouterConfig";
 import { FallingLines } from "react-loader-spinner";
 import { setIsPageLoading } from "./redux/slices/appSlice";
+import BasketDrawer from "./components/BasketDrawer";
 
 function App() {
   const { isPageLoading } = useSelector((store) => store.app);
@@ -21,6 +22,7 @@ function App() {
     <>
       <Header />
       <RouteConfig />
+      <BasketDrawer />
       {isPageLoading || isProductLoading ? (
         <div className="app__spinner">
           <FallingLines

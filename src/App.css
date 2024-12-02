@@ -12,6 +12,7 @@
   --header-height: 10rem;
   --header-max-height: 130px;
   --main-bg-clr: #fff;
+  --main-secondary-bg-clr: rgb(232, 114, 47);
   --main-clr: black;
   --main-border-color: lightgrey;
   --thema-ico-size: 1.8rem;
@@ -35,6 +36,7 @@
   padding-top: calc(var(--header-height) + 0.5rem);
   padding-right: var(--section-side-paddings);
   padding-left: var(--section-side-paddings);
+  position: relative;
 }
 
 .page__container--grid {
@@ -50,6 +52,7 @@
   padding-bottom: 1rem;
   padding-right: var(--section-side-paddings);
   padding-left: var(--section-side-paddings);
+  position: relative;
 }
 
 .flex-row-centered {

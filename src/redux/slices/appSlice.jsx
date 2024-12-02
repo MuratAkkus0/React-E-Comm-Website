@@ -18,7 +18,6 @@ export const appSlice = createSlice({
     },
     setIsPageLoading: (state, action) => {
       state.isPageLoading = false;
-      console.log(state.isPageLoading);
     },
   },
 });

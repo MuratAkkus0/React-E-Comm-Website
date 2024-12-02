@@ -7,16 +7,7 @@ function ProductList() {
   return (
     <>
       {products &&
-        products.map((item) => (
-          <Product
-            key={item.id}
-            title={item.title}
-            description={item.description}
-            image={item.image}
-            category={item.category}
-            price={item.price}
-          />
-        ))}
+        products.map((item) => <Product key={item.id} product={item} />)}
     </>
   );
 }
