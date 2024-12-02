@@ -11,6 +11,7 @@ function Home() {
 
   const handleClick = (e) => {
     e.stopPropagation();
+    console.log("rst");
     dispatch(setIsSearchbarActive(false));
     dispatch(setIsBasketActive(false));
   };

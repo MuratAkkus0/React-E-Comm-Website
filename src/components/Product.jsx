@@ -16,12 +16,12 @@ function Product({ product }) {
   const handleCardClick = (e) => {
     e.stopPropagation();
     dispatch(setIsSearchbarActive(false));
-    dispatch(setIsBasketActive(false));
-
+    console.log("first");
     //event Delegation
     let el = e.target.tagName;
     if (el != "BUTTON" && el != "svg" && el != "SPAN") {
       navigate("/product-details/" + id);
+      dispatch(setIsBasketActive(false));
     }
   };
   return (
