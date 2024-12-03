@@ -19,6 +19,9 @@
   --section-side-paddings: 15rem;
   --section-side-paddings-s: 1rem;
 }
+body {
+  overflow: hidden;
+}
 
 #root {
   width: 100%;
@@ -98,9 +101,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  body {
-    overflow: hidden;
-  }
   .page__container--grid {
     grid-template-columns: auto auto;
     grid-auto-rows: 22rem;
