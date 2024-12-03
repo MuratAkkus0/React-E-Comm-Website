@@ -19,9 +19,9 @@
   --section-side-paddings: 15rem;
   --section-side-paddings-s: 1rem;
 }
-body {
+/* body {
   overflow: hidden;
-}
+} */
 
 #root {
   width: 100%;
