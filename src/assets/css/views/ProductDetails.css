@@ -4,6 +4,7 @@
   overflow-y: auto;
   display: flex;
   gap: 1rem;
+  justify-content: center;
   padding-top: calc(var(--header-height) + 0.5rem);
   padding-right: var(--section-side-paddings);
   padding-left: var(--section-side-paddings);
@@ -65,6 +66,7 @@
     flex-shrink: 0;
     gap: 1rem;
     flex-direction: column;
+    justify-content: flex-start;
     padding-top: calc(var(--header-max-height) + 3rem);
     padding-right: var(--section-side-paddings-s);
     padding-left: var(--section-side-paddings-s);
