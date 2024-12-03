@@ -21,7 +21,6 @@
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: top;
   gap: 2rem;
 }
 
@@ -52,4 +51,28 @@
 }
 .go-back:hover {
   transform: scale(1.05);
+}
+@media screen and (max-width: 768px) {
+  .product__details--container {
+    overflow-y: auto;
+    flex-shrink: 0;
+    gap: 0.5rem;
+  }
+  .go-back {
+    margin-top: 0.5rem;
+  }
+  .product__details--container > * {
+    flex-shrink: 0;
+  }
+  .product__details {
+    gap: 1rem;
+  }
+  .product__img--container {
+    width: 100%;
+    height: 75%;
+  }
+  .product__img--img {
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
