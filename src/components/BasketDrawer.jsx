@@ -28,12 +28,8 @@ function BasketDrawer() {
   return (
     <>
       <div
-        style={
-          isBasketActive
-            ? {}
-            : { right: "-100%", width: "0", overflow: "hidden" }
-        }
-        className="basket--container flex-column"
+        style={isBasketActive ? { right: "0", overflow: "hidden" } : {}}
+        className="basket--container"
       >
         {products && products.length ? (
           <>
