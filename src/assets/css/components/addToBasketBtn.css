@@ -1,6 +1,7 @@
 .add__basket--container {
-  height: 3rem;
+  height: 2.2rem;
   gap: 0.15rem;
+  flex-shrink: 0;
   justify-content: right;
   user-select: none;
 }
