@@ -1,4 +1,5 @@
 .product__details--container {
+  height: 100%;
   gap: 1rem;
 }
 
@@ -56,9 +57,6 @@
   .product__details--container {
     flex-shrink: 0;
     gap: 1rem;
-  }
-  .go-back {
-    /* margin-top: 0.5rem; */
   }
   .product__details--container > * {
     flex-shrink: 0;
