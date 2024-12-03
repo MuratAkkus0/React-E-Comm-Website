@@ -11,8 +11,8 @@
   background-color: var(--main-bg-clr);
   transition: 0.4s all;
   position: absolute;
-  top: var(--header-height);
-  right: -100%;
+  top: var(--header-max-height);
+  right: 0%;
   bottom: 0;
 }
 

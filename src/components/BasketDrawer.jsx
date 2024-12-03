@@ -28,7 +28,7 @@ function BasketDrawer() {
   return (
     <>
       <div
-        style={isBasketActive ? { right: "0", overflow: "hidden" } : {}}
+        style={isBasketActive ? {} : { right: "-150%", overflow: "hidden" }}
         className="basket--container"
       >
         {products && products.length ? (
