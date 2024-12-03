@@ -4,7 +4,6 @@ import AddToBasketBtn from "../components/AddToBasketBtn";
 import { useEffect } from "react";
 import { setSelectedProduct } from "../redux/slices/productSlice";
 import "../assets/css/views/ProductDetails.css";
-import { setIsBasketActive } from "../redux/slices/basketSlice";
 import { MdArrowBack } from "react-icons/md";
 
 function ProductDetails() {
@@ -31,7 +30,6 @@ function ProductDetails() {
   return (
     <>
       <section
-        onClick={() => dispatch(setIsBasketActive(false))}
         className={`product__details--container page__container--flex-x-centered `}
       >
         <div

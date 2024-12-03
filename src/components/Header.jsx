@@ -14,17 +14,16 @@ function Header() {
 
   const handleClick = (event) => {
     event.stopPropagation();
-    //close basket
-    if (event.target.id !== "basketIcon") {
+    console.log(event.target.tagName);
+    //open basket
+    if (!event.target.closest("#basketIcon")) {
       dispatch(setIsBasketActive(false));
-      console.log(isBasketActive);
       return;
     }
     // close searchbar
-    if (event.target.closest("#headerSearchInput")) {
-      return;
-    } else {
+    if (!event.target.closest("#headerSearchInput")) {
       dispatch(setIsSearchbarActive(false));
+      return;
     }
   };
 
@@ -39,7 +38,11 @@ function Header() {
           <Searchbar onClick={(e) => e.stopPropagation()} />
           <CiShoppingBasket
             id="basketIcon"
-            onClick={() => dispatch(setIsBasketActive())}
+            onClick={(e) => {
+              console.log(e.target);
+              dispatch(setIsBasketActive());
+            }}
+            style={{ zIndex: "4" }}
             className="card__icon icon-clickable"
           />
         </div>

@@ -14,6 +14,7 @@
   top: var(--header-max-height);
   right: 0%;
   bottom: 0;
+  z-index: 7;
 }
 
 .basket__product--container {
@@ -55,4 +56,16 @@
 .basket__product--price {
   width: 100%;
   text-align: center;
+}
+.basket_outer {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s all;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 7;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

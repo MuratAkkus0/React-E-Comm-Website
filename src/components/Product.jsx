@@ -3,7 +3,6 @@ import "../assets/css/components/product.css";
 import AddToBasketBtn from "./AddToBasketBtn";
 import { useDispatch } from "react-redux";
 import { setIsSearchbarActive } from "../redux/slices/appSlice";
-import { setIsBasketActive } from "../redux/slices/basketSlice";
 
 function Product({ product }) {
   const { id, title, description, image, price, category } = product;
@@ -16,13 +15,10 @@ function Product({ product }) {
   const handleCardClick = (e) => {
     e.stopPropagation();
     dispatch(setIsSearchbarActive(false));
-    console.log("first");
     //event Delegation
     let el = e.target.tagName;
-    console.log(el);
     if (el != "BUTTON" && el != "svg" && el != "SPAN" && el != "path") {
       navigate("/product-details/" + id);
-      dispatch(setIsBasketActive(false));
     }
   };
   return (

@@ -3,7 +3,6 @@ import "../assets/css/views/Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSearchbarActive } from "../redux/slices/appSlice";
 import { checkHeaderVisibility } from "../helpers/headerHide.js";
-import { setIsBasketActive } from "../redux/slices/basketSlice.jsx";
 
 function Home() {
   const { isDarkTheme } = useSelector((store) => store.app);
@@ -13,7 +12,6 @@ function Home() {
     e.stopPropagation();
     console.log("rst");
     dispatch(setIsSearchbarActive(false));
-    dispatch(setIsBasketActive(false));
   };
 
   function handleScroll(e) {

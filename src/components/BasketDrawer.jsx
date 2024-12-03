@@ -1,7 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/components/basketDrawer.css";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import { setCount, setTotalAmount } from "../redux/slices/basketSlice";
+import {
+  setCount,
+  setIsBasketActive,
+  setTotalAmount,
+} from "../redux/slices/basketSlice";
 import { useEffect } from "react";
 
 function BasketDrawer() {
@@ -27,6 +31,14 @@ function BasketDrawer() {
 
   return (
     <>
+      {isBasketActive ? (
+        <div
+          onClick={() => dispatch(setIsBasketActive(false))}
+          className="basket_outer"
+        ></div>
+      ) : (
+        ""
+      )}
       <div
         style={isBasketActive ? {} : { right: "-150%", overflow: "hidden" }}
         className="basket--container"
