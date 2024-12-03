@@ -61,10 +61,10 @@
     flex-shrink: 0;
     gap: 1rem;
     flex-direction: column;
-    padding-top: calc(var(--header-max-height) + 3rem);
+    padding-top: calc(var(--header-max-height) + 1rem);
     padding-right: var(--section-side-paddings-s);
     padding-left: var(--section-side-paddings-s);
-    padding-bottom: 10rem;
+    padding-bottom: 8rem;
   }
   .product__details--container > * {
     flex-shrink: 0;
