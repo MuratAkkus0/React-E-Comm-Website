@@ -1,5 +1,12 @@
 .product__details--container {
   gap: 1rem;
+<<<<<<< HEAD
+=======
+  padding-top: calc(var(--header-height) + 0.5rem);
+  padding-right: var(--section-side-paddings);
+  padding-left: var(--section-side-paddings);
+  position: relative;
+>>>>>>> parent of e67a057 (testtt)
 }
 
 .product__img--container {
@@ -56,6 +63,14 @@
   .product__details--container {
     flex-shrink: 0;
     gap: 1rem;
+<<<<<<< HEAD
+=======
+    flex-direction: column;
+    padding-top: calc(var(--header-max-height) + 3rem);
+    padding-right: var(--section-side-paddings-s);
+    padding-left: var(--section-side-paddings-s);
+    padding-bottom: 10rem;
+>>>>>>> parent of e67a057 (testtt)
   }
   .product__details--container > * {
     flex-shrink: 0;
