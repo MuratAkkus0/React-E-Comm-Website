@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "sonner";
 
 const initialState = {
   products: getProductsFromLS(),
@@ -15,23 +16,32 @@ const basketSlice = createSlice({
   initialState,
   reducers: {
     setProductToBasket: (state, action) => {
-      if (action.payload.count == 0) return;
-      let product = action.payload;
-      let basket = state.products ?? [];
-      let findProduct = basket && basket.find((item) => item.id == product.id);
+      if (action.payload.count == 0) {
+        toast.info("Please select product quantity first.");
+        return;
+      }
+      try {
+        let product = action.payload;
+        let basket = state.products ?? [];
+        let findProduct =
+          basket && basket.find((item) => item.id == product.id);
 
-      if (findProduct) {
-        let extractedList = basket.filter((item) => item.id != product.id);
+        if (findProduct) {
+          let extractedList = basket.filter((item) => item.id != product.id);
 
-        product.count += findProduct.count;
-        localStorage.setItem(
-          "basket",
-          JSON.stringify([...extractedList, product])
-        );
-        state.products = [...extractedList, product];
-      } else {
-        localStorage.setItem("basket", JSON.stringify([...basket, product]));
-        state.products = [...basket, product];
+          product.count += findProduct.count;
+          localStorage.setItem(
+            "basket",
+            JSON.stringify([...extractedList, product])
+          );
+          state.products = [...extractedList, product];
+        } else {
+          localStorage.setItem("basket", JSON.stringify([...basket, product]));
+          state.products = [...basket, product];
+        }
+        toast.success("Product successfuly added to basket.");
+      } catch (error) {
+        throw new Error("Error by setProductToBasket");
       }
     },
     setCount: (state, action) => {
@@ -44,6 +54,7 @@ const basketSlice = createSlice({
         basketProducts = basketProducts.filter(
           (item) => item.id !== currentItem.id
         );
+        toast.success("Product successfuly deleted from basket.");
       }
       localStorage.setItem("basket", JSON.stringify([...basketProducts]));
       state.products = [...basketProducts];
@@ -52,12 +63,16 @@ const basketSlice = createSlice({
       state.isBasketActive = action.payload ?? !state.isBasketActive;
     },
     setTotalAmount: (state) => {
-      state.totalAmount = 0;
-      state.products &&
-        state.products.map((item) => {
-          state.totalAmount += item.price * item.count;
-        });
-      state.totalAmount = state.totalAmount.toFixed(2);
+      try {
+        state.totalAmount = 0;
+        state.products &&
+          state.products.map((item) => {
+            state.totalAmount += item.price * item.count;
+          });
+        state.totalAmount = state.totalAmount.toFixed(2);
+      } catch (error) {
+        throw new Error("Error by setTotalAmount");
+      }
     },
   },
 });

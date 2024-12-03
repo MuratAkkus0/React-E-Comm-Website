@@ -7,6 +7,7 @@ import RouteConfig from "./config/RouterConfig";
 import { FallingLines } from "react-loader-spinner";
 import { setIsPageLoading } from "./redux/slices/appSlice";
 import BasketDrawer from "./components/BasketDrawer";
+import { Toaster } from "sonner";
 
 function App() {
   const { isPageLoading } = useSelector((store) => store.app);
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <>
+      <Toaster closeButton position="top-right" expand={false} richColors />
       <Header />
       <RouteConfig />
       <BasketDrawer />

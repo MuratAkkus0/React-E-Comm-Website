@@ -8,6 +8,7 @@ import {
   setTotalAmount,
 } from "../redux/slices/basketSlice";
 import ItemAmountBtn from "./ItemAmountBtn";
+import { toast } from "sonner";
 
 function AddToBasketBtn({ product }) {
   const { id, title, image, price } = product;
@@ -22,9 +23,14 @@ function AddToBasketBtn({ product }) {
   };
 
   const AddToBasket = () => {
-    dispatch(setProductToBasket(basketItem));
-    dispatch(setTotalAmount());
-    setCount(0);
+    try {
+      dispatch(setProductToBasket(basketItem));
+      dispatch(setTotalAmount());
+      setCount(0);
+    } catch (error) {
+      toast.error("An error occured during adding item to basket.");
+      throw new Error("An error occured during adding item to basket.");
+    }
   };
 
   return (

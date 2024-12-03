@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { setSelectedProduct } from "../redux/slices/productSlice";
 import "../assets/css/views/ProductDetails.css";
 import { MdArrowBack } from "react-icons/md";
+import { checkHeaderVisibility } from "../helpers/headerHide.js";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -12,6 +13,10 @@ function ProductDetails() {
   const { title, description, image, price } = selectedProduct;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    checkHeaderVisibility(0);
+  }, []);
 
   useEffect(() => {
     getProductById();
@@ -26,10 +31,14 @@ function ProductDetails() {
         }
       });
   }
+  function handleScroll(e) {
+    checkHeaderVisibility(e.target.scrollTop);
+  }
 
   return (
     <>
       <section
+        onScroll={handleScroll}
         className={`product__details--container page__container--flex-x-centered `}
       >
         <div
