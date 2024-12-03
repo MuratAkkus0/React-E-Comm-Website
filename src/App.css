@@ -98,6 +98,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  body {
+    overflow: hidden;
+  }
   .page__container--grid {
     grid-template-columns: auto auto;
     grid-auto-rows: 22rem;
@@ -105,7 +108,7 @@
     padding-left: var(--section-side-paddings-s);
   }
   .page__container--flex-x-centered {
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     flex-wrap: nowrap;
     padding-top: calc(var(--header-max-height) + 3rem);
@@ -115,9 +118,6 @@
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1440px) {
-  body {
-    overflow: hidden;
-  }
   .page__container--grid {
     padding-right: var(--section-side-paddings-m);
     padding-left: var(--section-side-paddings-m);
