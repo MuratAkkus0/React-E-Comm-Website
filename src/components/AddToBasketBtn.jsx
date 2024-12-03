@@ -36,7 +36,12 @@ function AddToBasketBtn({ product, styles }) {
   return (
     <div className="add__basket--container flex-row-centered">
       <ItemAmountBtn
-        styles={{ iconSize: "2rem", fontSize: "1.2rem" }}
+        styles={
+          styles && {
+            iconSize: styles.amountBtnFontSize,
+            fontSize: styles.amountFontSize,
+          }
+        }
         count={count}
         setCount={setCount}
       />

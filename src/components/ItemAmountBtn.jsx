@@ -2,7 +2,7 @@ import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
 import "../assets/css/components/itemAmountBtn.css";
 
-function ItemAmountBtn({ styles, count, setCount }) {
+function ItemAmountBtn({ styles = null, count, setCount }) {
   return (
     <div className="item__amount--container flex-row-centered">
       <CiCircleMinus

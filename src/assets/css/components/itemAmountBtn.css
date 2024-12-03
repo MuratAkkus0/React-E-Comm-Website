@@ -26,10 +26,10 @@
     gap: 0;
   }
   .item__amount--icons {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .item__amount--amount {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
 }
