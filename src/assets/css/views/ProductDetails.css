@@ -1,5 +1,13 @@
 .product__details--container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
   gap: 1rem;
+  padding-top: calc(var(--header-height) + 0.5rem);
+  padding-right: var(--section-side-paddings);
+  padding-left: var(--section-side-paddings);
+  position: relative;
 }
 
 .product__img--container {
@@ -56,6 +64,11 @@
   .product__details--container {
     flex-shrink: 0;
     gap: 1rem;
+    flex-direction: column;
+    padding-top: calc(var(--header-max-height) + 3rem);
+    padding-right: var(--section-side-paddings-s);
+    padding-left: var(--section-side-paddings-s);
+    padding-bottom: 3rem;
   }
   .product__details--container > * {
     flex-shrink: 0;

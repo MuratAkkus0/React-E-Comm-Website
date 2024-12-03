@@ -39,7 +39,7 @@ function ProductDetails() {
     <>
       <section
         onScroll={handleScroll}
-        className={`product__details--container page__container--flex-x-centered `}
+        className={`product__details--container `}
       >
         <div
           className="go-back flex-row-centered"
