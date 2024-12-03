@@ -56,10 +56,10 @@
   .product__details--container {
     overflow-y: auto;
     flex-shrink: 0;
-    gap: 0.5rem;
+    gap: 1rem;
   }
   .go-back {
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
   }
   .product__details--container > * {
     flex-shrink: 0;
