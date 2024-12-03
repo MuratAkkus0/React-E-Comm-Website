@@ -75,4 +75,17 @@
     max-height: 100%;
     max-width: 100%;
   }
+  .add__basket--btn {
+    font-size: 1rem;
+  }
+  .add__basket--icon {
+    font-size: 1.4rem;
+  }
+  .item__amount--icons {
+    font-size: 1.8rem;
+  }
+
+  .item__amount--amount {
+    font-size: 1.2rem;
+  }
 }
