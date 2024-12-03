@@ -82,7 +82,7 @@ function BasketDrawer() {
                 </div>
               </div>
             ))}
-            <span>{totalAmount}</span>{" "}
+            <span className="basket__total">Total: {totalAmount}</span>{" "}
           </>
         ) : (
           <span className="basket--no-item">No Item :(</span>
