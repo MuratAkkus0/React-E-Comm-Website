@@ -10,7 +10,7 @@ import {
 import ItemAmountBtn from "./ItemAmountBtn";
 import { toast } from "sonner";
 
-function AddToBasketBtn({ product }) {
+function AddToBasketBtn({ product, styles }) {
   const { id, title, image, price } = product;
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
@@ -35,9 +35,21 @@ function AddToBasketBtn({ product }) {
 
   return (
     <div className="add__basket--container flex-row-centered">
-      <ItemAmountBtn count={count} setCount={setCount} />
-      <button onClick={AddToBasket} className="add__basket--btn">
-        <SlBasket className="add__basket--icon" /> Add to cart
+      <ItemAmountBtn
+        styles={{ iconSize: "2rem", fontSize: "1.2rem" }}
+        count={count}
+        setCount={setCount}
+      />
+      <button
+        onClick={AddToBasket}
+        style={styles && { fontSize: styles.btnFontSize }}
+        className="add__basket--btn"
+      >
+        <SlBasket
+          style={styles && { fontSize: styles.iconSize }}
+          className="add__basket--icon"
+        />{" "}
+        Add to cart
       </button>
     </div>
   );

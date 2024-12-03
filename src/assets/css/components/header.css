@@ -18,6 +18,9 @@ header {
   height: 2rem;
   gap: 1rem;
 }
+.card__icon--container {
+  position: relative;
+}
 
 @media screen and (max-width: 768px) {
   header {
@@ -35,12 +38,8 @@ header {
     grid-template-rows: repeat(2, auto);
   }
 
-  .card__icon {
+  .card__icon--container {
     grid-row: 2/3;
     grid-column: 3/4;
   }
-}
-
-.card__icon--container {
-  position: relative;
 }

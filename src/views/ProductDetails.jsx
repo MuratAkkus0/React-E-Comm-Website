@@ -54,7 +54,10 @@ function ProductDetails() {
           <div className="product__details--title">{title}</div>
           <div className="product__details--description">{description}</div>
           <div className="product__details--price">{price}€</div>
-          <AddToBasketBtn product={selectedProduct} />
+          <AddToBasketBtn
+            styles={{ iconSize: "1.4rem", btnFontSize: "1rem" }}
+            product={selectedProduct}
+          />
         </div>
       </section>
     </>
