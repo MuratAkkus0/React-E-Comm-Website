@@ -19,7 +19,8 @@ function Product({ product }) {
     console.log("first");
     //event Delegation
     let el = e.target.tagName;
-    if (el != "BUTTON" && el != "svg" && el != "SPAN") {
+    console.log(el);
+    if (el != "BUTTON" && el != "svg" && el != "SPAN" && el != "path") {
       navigate("/product-details/" + id);
       dispatch(setIsBasketActive(false));
     }
