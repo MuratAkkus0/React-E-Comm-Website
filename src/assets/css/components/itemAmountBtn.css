@@ -21,3 +21,15 @@
 .item__amount--icons:active {
   transform: scale(0.99);
 }
+@media screen and (max-width: 768px) {
+  .item__amount--container {
+    gap: 0;
+  }
+  .item__amount--icons {
+    font-size: 1.5rem;
+  }
+
+  .item__amount--amount {
+    font-size: 1.05rem;
+  }
+}
