@@ -1,0 +1,28 @@
+.not-found__container {
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.not-found__code {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--main-secondary-bg-clr);
+}
+
+.not-found__message {
+  font-size: 1.1rem;
+  color: var(--main-clr);
+}
+
+.not-found__link {
+  margin-top: 1rem;
+  color: var(--main-secondary-bg-clr);
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.not-found__link:hover,
+.not-found__link:focus-visible {
+  text-decoration: none;
+}
