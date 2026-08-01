@@ -40,7 +40,10 @@ function AddToBasketBtn({ product, styles }) {
   };
 
   return (
-    <div className="add__basket--container flex-row-centered">
+    <div
+      data-basket-controls
+      className="add__basket--container flex-row-centered"
+    >
       <ItemAmountBtn
         styles={
           styles && {

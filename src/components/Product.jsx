@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { setIsSearchbarActive } from "../redux/slices/appSlice";
 
 function Product({ product }) {
-  const { id, title, description, image, price, category } = product;
+  const { id, title, description, image, price } = product;
   const currency = "€";
   const charLimitTitle = 26;
   const charLimitDesc = 90;
@@ -15,16 +15,14 @@ function Product({ product }) {
   const handleCardClick = (e) => {
     e.stopPropagation();
     dispatch(setIsSearchbarActive(false));
-    //event Delegation
-    let el = e.target.tagName;
-    if (el != "BUTTON" && el != "svg" && el != "SPAN" && el != "path") {
-      navigate("/product-details/" + id);
-    }
+    // Don't navigate when the click originated from the basket controls.
+    if (e.target.closest("[data-basket-controls]")) return;
+    navigate("/product-details/" + id);
   };
   return (
     <div onClick={handleCardClick} className="product__card--container">
       <div className="product__card--image-container flex-row-centered">
-        <img className="product__card--img" src={image} alt="product image" />
+        <img className="product__card--img" src={image} alt={title} />
       </div>
       <div className="product__card--title">
         {title.length > charLimitTitle
