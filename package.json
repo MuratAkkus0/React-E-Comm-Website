@@ -1,0 +1,19 @@
+{
+  "name": "react-e-comm-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "test -f packages/shared/tsconfig.json && pnpm --filter @ecomm/shared run build || true",
+    "dev:api": "pnpm --filter @ecomm/api run dev",
+    "dev:web": "pnpm --filter @ecomm/web run dev",
+    "build": "pnpm --filter @ecomm/shared run build && pnpm --filter @ecomm/api run build && pnpm --filter @ecomm/web run build",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "pnpm -r run lint",
+    "test": "pnpm -r --if-present run test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@11.1.1"
+}
