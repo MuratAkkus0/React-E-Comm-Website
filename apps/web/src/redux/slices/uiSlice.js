@@ -1,40 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+function readStoredTheme() {
+  return localStorage.getItem("theme") === "dark";
+}
+
 const initialState = {
-  isDarkTheme: false,
+  isDarkTheme: readStoredTheme(),
   isSearchbarActive: false,
-  isPageLoading: true,
   isHeaderVisible: true,
-  searchQuery: "",
 };
 
-export const appSlice = createSlice({
-  name: "app",
+export const uiSlice = createSlice({
+  name: "ui",
   initialState,
   reducers: {
-    setIsDarkTheme: (state) => {
+    themeToggled: (state) => {
       state.isDarkTheme = !state.isDarkTheme;
+      localStorage.setItem("theme", state.isDarkTheme ? "dark" : "light");
     },
-    setIsSearchbarActive: (state, val) => {
-      state.isSearchbarActive = val.payload ?? !state.isSearchbarActive;
+    searchbarActiveSet: (state, action) => {
+      state.isSearchbarActive = action.payload ?? !state.isSearchbarActive;
     },
-    setIsPageLoading: (state, action) => {
-      state.isPageLoading = action.payload;
-    },
-    setIsHeaderVisible: (state, action) => {
+    headerVisibleSet: (state, action) => {
       state.isHeaderVisible = action.payload;
-    },
-    setSearchQuery: (state, action) => {
-      state.searchQuery = action.payload;
     },
   },
 });
 
-export const {
-  setIsDarkTheme,
-  setIsSearchbarActive,
-  setIsPageLoading,
-  setIsHeaderVisible,
-  setSearchQuery,
-} = appSlice.actions;
-export default appSlice.reducer;
+export const { themeToggled, searchbarActiveSet, headerVisibleSet } = uiSlice.actions;
+export default uiSlice.reducer;

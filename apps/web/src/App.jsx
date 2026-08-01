@@ -1,42 +1,35 @@
 import { useEffect } from "react";
-import "./App.css";
-import Header from "./components/Header";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "./redux/slices/productSlice";
-import RouteConfig from "./config/RouterConfig";
-import { FallingLines } from "react-loader-spinner";
-import { setIsPageLoading } from "./redux/slices/appSlice";
-import BasketDrawer from "./components/BasketDrawer";
+import { useSelector } from "react-redux";
 import { Toaster } from "sonner";
+import "./App.css";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import AppRoutes from "./routes/AppRoutes";
+import { useRefreshMutation } from "./api/authApi";
 
 function App() {
-  const { isPageLoading } = useSelector((store) => store.app);
-  const { isProductLoading } = useSelector((store) => store.products);
-  const dispatch = useDispatch();
+  const isDarkTheme = useSelector((state) => state.ui.isDarkTheme);
+  const [refresh] = useRefreshMutation();
 
   useEffect(() => {
-    dispatch(getAllProducts());
-    dispatch(setIsPageLoading(false));
-  }, [dispatch]);
+    // Silently try to exchange the httpOnly refresh cookie (if any) for a
+    // fresh access token on first load, so a returning user doesn't have
+    // to log in again every time they open the app.
+    refresh();
+  }, [refresh]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = isDarkTheme ? "dark" : "light";
+  }, [isDarkTheme]);
 
   return (
     <>
       <Toaster closeButton position="top-right" expand={false} richColors />
       <Header />
-      <RouteConfig />
-      <BasketDrawer />
-      {isPageLoading || isProductLoading ? (
-        <div className="app__spinner">
-          <FallingLines
-            color="black"
-            width="100"
-            visible={true}
-            ariaLabel="falling-circles-loading"
-          />
-        </div>
-      ) : (
-        ""
-      )}
+      <main className="app__main">
+        <AppRoutes />
+      </main>
+      <Footer />
     </>
   );
 }

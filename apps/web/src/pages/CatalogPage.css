@@ -1,0 +1,17 @@
+.catalog__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+.catalog__filter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+.catalog__search-summary {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-muted);
+}
