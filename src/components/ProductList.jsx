@@ -3,11 +3,31 @@ import Product from "./Product";
 
 function ProductList() {
   const { products } = useSelector((store) => store.products);
+  const { searchQuery } = useSelector((store) => store.app);
+
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+
+  const filteredProducts = normalizedQuery
+    ? (products ?? []).filter(
+        (item) =>
+          item.title.toLowerCase().includes(normalizedQuery) ||
+          item.category.toLowerCase().includes(normalizedQuery)
+      )
+    : products ?? [];
+
+  if (normalizedQuery && filteredProducts.length === 0) {
+    return (
+      <div className="product__list--empty">
+        No products match &quot;{searchQuery}&quot;.
+      </div>
+    );
+  }
 
   return (
     <>
-      {products &&
-        products.map((item) => <Product key={item.id} product={item} />)}
+      {filteredProducts.map((item) => (
+        <Product key={item.id} product={item} />
+      ))}
     </>
   );
 }

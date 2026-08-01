@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,8 +16,8 @@ function App() {
 
   useEffect(() => {
     dispatch(getAllProducts());
-    dispatch(setIsPageLoading());
-  }, []);
+    dispatch(setIsPageLoading(false));
+  }, [dispatch]);
 
   return (
     <>
