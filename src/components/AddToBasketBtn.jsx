@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import "../assets/css/components/addToBasketBtn.css";
 
 import { SlBasket } from "react-icons/sl";
@@ -68,5 +69,20 @@ function AddToBasketBtn({ product, styles }) {
     </div>
   );
 }
+
+AddToBasketBtn.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    price: PropTypes.number.isRequired,
+  }).isRequired,
+  styles: PropTypes.shape({
+    iconSize: PropTypes.string,
+    btnFontSize: PropTypes.string,
+    amountBtnFontSize: PropTypes.string,
+    amountFontSize: PropTypes.string,
+  }),
+};
 
 export default AddToBasketBtn;

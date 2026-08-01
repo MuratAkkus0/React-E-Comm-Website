@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import "../assets/css/components/product.css";
 import AddToBasketBtn from "./AddToBasketBtn";
 import { useDispatch } from "react-redux";
@@ -42,5 +43,16 @@ function Product({ product }) {
     </div>
   );
 }
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    price: PropTypes.number.isRequired,
+    category: PropTypes.string,
+  }).isRequired,
+};
 
 export default Product;

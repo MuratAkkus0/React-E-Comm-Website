@@ -1,5 +1,6 @@
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
+import PropTypes from "prop-types";
 import "../assets/css/components/itemAmountBtn.css";
 
 function ItemAmountBtn({ styles = null, count, setCount }) {
@@ -28,5 +29,14 @@ function ItemAmountBtn({ styles = null, count, setCount }) {
     </div>
   );
 }
+
+ItemAmountBtn.propTypes = {
+  styles: PropTypes.shape({
+    iconSize: PropTypes.string,
+    fontSize: PropTypes.string,
+  }),
+  count: PropTypes.number.isRequired,
+  setCount: PropTypes.func.isRequired,
+};
 
 export default ItemAmountBtn;
