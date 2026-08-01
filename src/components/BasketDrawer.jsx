@@ -7,6 +7,7 @@ import {
   setTotalAmount,
 } from "../redux/slices/basketSlice";
 import { useEffect } from "react";
+import { toast } from "sonner";
 
 function BasketDrawer() {
   const { products, isBasketActive, totalAmount } = useSelector(
@@ -18,11 +19,15 @@ function BasketDrawer() {
 
   useEffect(() => {
     dispatch(setTotalAmount());
-  }, []);
+  }, [dispatch]);
 
   const reduceProductAmount = (count, index) => {
-    dispatch(setCount({ count: count - 1, index }));
+    const nextCount = count - 1;
+    dispatch(setCount({ count: nextCount, index }));
     dispatch(setTotalAmount());
+    if (nextCount === 0) {
+      toast.success("Product successfully removed from basket.");
+    }
   };
   const increaseProductAmount = (count, index) => {
     dispatch(setCount({ count: count + 1, index }));
@@ -50,7 +55,7 @@ function BasketDrawer() {
                 <div className="basket__product--img--container flex-row-centered">
                   <img
                     src={item.image}
-                    alt=""
+                    alt={item.title}
                     className="basket__product--img"
                   />
                 </div>
@@ -85,7 +90,7 @@ function BasketDrawer() {
             <span className="basket__total">Total: {totalAmount}</span>{" "}
           </>
         ) : (
-          <span className="basket--no-item">No Item :(</span>
+          <span className="basket--no-item">Your basket is empty.</span>
         )}
       </div>
     </>

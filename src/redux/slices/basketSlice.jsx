@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "sonner";
+
+function getProductsFromLS() {
+  try {
+    return JSON.parse(localStorage.getItem("basket")) ?? [];
+  } catch {
+    return [];
+  }
+}
 
 const initialState = {
   products: getProductsFromLS(),
@@ -7,72 +14,51 @@ const initialState = {
   isBasketActive: false,
 };
 
-function getProductsFromLS() {
-  return JSON.parse(localStorage.getItem("basket")) ?? [];
-}
-
 const basketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
     setProductToBasket: (state, action) => {
-      if (action.payload.count == 0) {
-        toast.info("Please select product quantity first.");
-        return;
-      }
-      try {
-        let product = action.payload;
-        let basket = state.products ?? [];
-        let findProduct =
-          basket && basket.find((item) => item.id == product.id);
+      const product = action.payload;
+      const basket = state.products ?? [];
+      const existingProduct = basket.find((item) => item.id === product.id);
 
-        if (findProduct) {
-          let extractedList = basket.filter((item) => item.id != product.id);
-
-          product.count += findProduct.count;
-          localStorage.setItem(
-            "basket",
-            JSON.stringify([...extractedList, product])
-          );
-          state.products = [...extractedList, product];
-        } else {
-          localStorage.setItem("basket", JSON.stringify([...basket, product]));
-          state.products = [...basket, product];
-        }
-        toast.success("Product successfuly added to basket.");
-      } catch (error) {
-        throw new Error("Error by setProductToBasket");
+      if (existingProduct) {
+        state.products = basket.map((item) =>
+          item.id === product.id
+            ? { ...item, count: item.count + product.count }
+            : item
+        );
+      } else {
+        state.products = [...basket, product];
       }
     },
     setCount: (state, action) => {
-      if (action.payload.count < 0) return;
-      let basketProducts = JSON.parse(localStorage.getItem("basket"));
-      const currentItem = basketProducts[action.payload.index];
+      const { index, count } = action.payload;
+      if (count < 0) return;
 
-      currentItem.count = action.payload.count;
-      if (action.payload.count == 0) {
-        basketProducts = basketProducts.filter(
+      const currentItem = state.products?.[index];
+      if (!currentItem) return;
+
+      if (count === 0) {
+        state.products = state.products.filter(
           (item) => item.id !== currentItem.id
         );
-        toast.success("Product successfuly deleted from basket.");
+      } else {
+        state.products = state.products.map((item, i) =>
+          i === index ? { ...item, count } : item
+        );
       }
-      localStorage.setItem("basket", JSON.stringify([...basketProducts]));
-      state.products = [...basketProducts];
     },
     setIsBasketActive: (state, action) => {
       state.isBasketActive = action.payload ?? !state.isBasketActive;
     },
     setTotalAmount: (state) => {
-      try {
-        state.totalAmount = 0;
-        state.products &&
-          state.products.map((item) => {
-            state.totalAmount += item.price * item.count;
-          });
-        state.totalAmount = state.totalAmount.toFixed(2);
-      } catch (error) {
-        throw new Error("Error by setTotalAmount");
-      }
+      const total = (state.products ?? []).reduce(
+        (sum, item) => sum + item.price * item.count,
+        0
+      );
+      state.totalAmount = total.toFixed(2);
     },
   },
 });

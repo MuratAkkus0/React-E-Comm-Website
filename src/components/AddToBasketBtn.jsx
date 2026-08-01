@@ -23,13 +23,19 @@ function AddToBasketBtn({ product, styles }) {
   };
 
   const AddToBasket = () => {
+    if (count === 0) {
+      toast.info("Please select product quantity first.");
+      return;
+    }
     try {
       dispatch(setProductToBasket(basketItem));
       dispatch(setTotalAmount());
+      toast.success("Product successfully added to basket.");
       setCount(0);
     } catch (error) {
-      toast.error("An error occured during adding item to basket.");
-      throw new Error("An error occured during adding item to basket.");
+      toast.error(
+        error.message || "An error occurred while adding the item to the basket."
+      );
     }
   };
 

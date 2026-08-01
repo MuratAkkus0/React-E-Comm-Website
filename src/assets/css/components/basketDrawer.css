@@ -77,3 +77,8 @@
   text-align: right;
   padding: 0 1rem;
 }
+.basket--no-item {
+  color: var(--main-border-color);
+  font-size: 1.1rem;
+  padding-top: 2rem;
+}
