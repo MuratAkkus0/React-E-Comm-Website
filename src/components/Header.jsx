@@ -10,8 +10,8 @@ import BasketItemCount from "./BasketItemCount";
 import { useEffect, useState } from "react";
 
 function Header() {
-  const { isDarkTheme } = useSelector((store) => store.app);
-  const { isBasketActive, products } = useSelector((store) => store.basket);
+  const { isDarkTheme, isHeaderVisible } = useSelector((store) => store.app);
+  const { products } = useSelector((store) => store.basket);
   const dispatch = useDispatch();
 
   const [basketItemCount, setBasketItemCount] = useState(0);
@@ -22,7 +22,6 @@ function Header() {
 
   const handleClick = (event) => {
     event.stopPropagation();
-    console.log(event.target.tagName);
     //open basket
     if (!event.target.closest("#basketIcon")) {
       dispatch(setIsBasketActive(false));
@@ -37,7 +36,13 @@ function Header() {
 
   return (
     <>
-      <header onClick={handleClick} className={isDarkTheme ? "dark-theme" : ""}>
+      <header
+        onClick={handleClick}
+        className={isDarkTheme ? "dark-theme" : ""}
+        style={{
+          transform: isHeaderVisible ? "translateY(0)" : "translateY(-100%)",
+        }}
+      >
         <div className="header__logo--container flex-column-centered">
           <Logo />
         </div>
@@ -48,10 +53,7 @@ function Header() {
             <BasketItemCount count={basketItemCount} />
             <CiShoppingBasket
               id="basketIcon"
-              onClick={(e) => {
-                console.log(e.target);
-                dispatch(setIsBasketActive());
-              }}
+              onClick={() => dispatch(setIsBasketActive())}
               style={{ zIndex: "4" }}
               className="card__icon icon-clickable"
             />

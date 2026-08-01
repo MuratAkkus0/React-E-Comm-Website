@@ -5,7 +5,7 @@ const BASE_URL = "https://fakestoreapi.com";
 
 const initialState = {
   products: [],
-  selectedProduct: [],
+  selectedProduct: null,
   isProductLoading: false,
 };
 
@@ -31,14 +31,11 @@ export const productSlice = createSlice({
       state.products = action.payload;
     });
     builder.addCase(getAllProducts.rejected, (state, action) => {
-      if (action.error)
+      if (action.error) {
         throw new Error(
-          `Deneme Error ${action.error.stack}: ${action.error.message}`,
-          {
-            cause:
-              "Check your API key or be sure that your API server is running.",
-          }
+          `Failed to load products from fakestoreapi.com: ${action.error.message}`
         );
+      }
     });
   },
 });

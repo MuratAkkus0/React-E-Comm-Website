@@ -13,6 +13,7 @@ function BasketDrawer() {
   const { products, isBasketActive, totalAmount } = useSelector(
     (store) => store.basket
   );
+  const { isHeaderVisible } = useSelector((store) => store.app);
   const currency = "€";
   const titleCharLimit = 26;
   const dispatch = useDispatch();
@@ -45,7 +46,10 @@ function BasketDrawer() {
         ""
       )}
       <div
-        style={isBasketActive ? {} : { right: "-150%", overflow: "hidden" }}
+        style={{
+          top: isHeaderVisible ? "var(--header-max-height)" : "0",
+          ...(isBasketActive ? {} : { right: "-150%", overflow: "hidden" }),
+        }}
         className="basket--container"
       >
         {products && products.length ? (

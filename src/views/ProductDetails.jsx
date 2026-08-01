@@ -5,35 +5,39 @@ import { useEffect } from "react";
 import { setSelectedProduct } from "../redux/slices/productSlice";
 import "../assets/css/views/ProductDetails.css";
 import { MdArrowBack } from "react-icons/md";
-import { checkHeaderVisibility } from "../helpers/headerHide.js";
+import { useHeaderAutoHide } from "../hooks/useHeaderAutoHide.js";
 
 function ProductDetails() {
   const { id } = useParams();
   const { products, selectedProduct } = useSelector((store) => store.products);
-  const { title, description, image, price } = selectedProduct;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const handleHeaderScroll = useHeaderAutoHide();
 
   useEffect(() => {
-    checkHeaderVisibility(0);
-  }, []);
+    handleHeaderScroll(0);
+  }, [handleHeaderScroll]);
 
   useEffect(() => {
-    getProductById();
-  }, [products]);
+    const matchedProduct = products.find((product) => product.id == id);
+    if (matchedProduct) {
+      dispatch(setSelectedProduct(matchedProduct));
+    }
+  }, [products, id, dispatch]);
 
-  function getProductById() {
-    products &&
-      products.find((product) => {
-        if (product.id == id) {
-          dispatch(setSelectedProduct(product));
-          return;
-        }
-      });
-  }
   function handleScroll(e) {
-    checkHeaderVisibility(e.target.scrollTop);
+    handleHeaderScroll(e.target.scrollTop);
   }
+
+  if (!selectedProduct) {
+    return (
+      <section className="product__details--container page__container--flex-x-centered">
+        Loading product...
+      </section>
+    );
+  }
+
+  const { title, description, image, price } = selectedProduct;
 
   return (
     <>
@@ -48,7 +52,7 @@ function ProductDetails() {
           <MdArrowBack />
         </div>
         <div className="product__img--container flex-row-centered">
-          <img className="product__img--img" src={image} alt="product image" />
+          <img className="product__img--img" src={image} alt={title} />
         </div>
         <div className="product__details">
           <div className="product__details--title">{title}</div>
